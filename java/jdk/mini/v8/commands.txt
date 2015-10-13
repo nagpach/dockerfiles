@@ -1,0 +1,5 @@
+docker build -t acme/minijdk8 .
+docker run -t acme/minijdk8 /bin/true
+docker export `docker ps -q -n=1` | docker import - acme/minijdk8:stripped
+docker history  acme/minijdk8:stripped
+docker run -ti acme/minijdk8:stripped /opt/jdk/bin/java -version
